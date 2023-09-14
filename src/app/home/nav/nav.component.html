@@ -1,0 +1,24 @@
+<div class="shadow w-80 h-screen">
+  <div class="">
+    <div class="w-50 h-50 px-12 p-12 text-content">
+      <span>Welcome, Doctor Psis</span>
+    </div>
+    <div class="m-2">Menu</div>
+    <div class="h-fit flex justify-center grid">
+      <button
+        class="flex hover:bg-sky-100 p-2 my-1 w-60 items-center rounded-xl"
+        *ngFor="let button of buttons"
+        (click)="navigate(button.url)">
+        <ng-icon size="1.5rem" name="{{ button.icon }}"></ng-icon>
+        <p class="ml-2">{{ button.label }}</p>
+      </button>
+    </div>
+    <!-- dark mode toggler -->
+    <button
+      class="flex transition-transform hover:scale-125 align-middle shadow-sm rounded-md"
+      (click)="toggleDarkMode()">
+      <span *ngIf="isDarkMode"><ng-icon name="heroSun"></ng-icon></span>
+      <span *ngIf="!isDarkMode"><ng-icon name="heroMoon"></ng-icon></span>
+    </button>
+  </div>
+</div>

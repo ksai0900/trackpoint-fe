@@ -4,4 +4,9 @@ import { Component } from '@angular/core';
   selector: 'app-home',
   templateUrl: './home.component.html',
 })
-export class HomeComponent {}
+export class HomeComponent {
+
+
+  // create an array variable with two values, dark and white
+
+}
