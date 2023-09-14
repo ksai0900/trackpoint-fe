@@ -5,10 +5,11 @@
 
 @layer base {
     :root {
-        --color-bkg: 99deg 0% 73%;
-        --color-bkg-content: 99deg 0% 80%;
-        --color-bkg-content-item: 99deg 0% 100%;
+        --color-bkg: 99deg 5% 87%;
+        --color-bkg-content: 99deg 5% 97%;
+        --color-bkg-content-item: 99deg 5% 100%;
         --color-text: 0deg 0% 7%;
+        --color-text-hover: 99deg 0% 18%;
         --color-content: 217deg 32% 17%;
         --color-accent1: 288deg 95% 90%;
         --color-accent2: 168deg 85% 78%;
@@ -20,9 +21,12 @@
             --color-bkg-content: 99deg 0% 37%;
             --color-bkg-content-item: 99deg 0% 57%;
             --color-text: 0deg 0% 92%;
-            --color-content: 210deg 40% 98%;
+            --color-text-hover: 99deg 5% 87%;
+            --color-content: 210deg 40% 100%;
             --color-accent1: 288deg 65% 90%;
             --color-accent2: 168deg 45% 78%;
+            --color-hover: 99deg 0% 80%;
+
         }
     }
 
@@ -31,9 +35,12 @@
         --color-bkg-content: 99deg 0% 37%;
         --color-bkg-content-item: 99deg 0% 57%;
         --color-text: 0deg 0% 92%;
-        --color-content: 210deg 40% 98%;
+        --color-text-hover: 99deg 5% 87%;
+        --color-content: 210deg 40% 100%;
         --color-accent1: 288deg 65% 90%;
         --color-accent2: 168deg 45% 78%;
+        --color-hover: 99deg 0% 80%;
+
     }
 
     /*     :root [data-theme="dark"] {
