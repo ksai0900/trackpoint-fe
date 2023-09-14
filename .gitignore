@@ -55,3 +55,12 @@ node_modules/autoprefixer/lib/browsers.js
 node_modules/autoprefixer/lib/autoprefixer.js
 node_modules/autoprefixer/data/prefixes.js
 node_modules/.package-lock.json
+node_modules/vite/types/importMeta.d.ts
+node_modules/vite/package.json
+node_modules/vite/dist/node/index.js
+node_modules/vite/dist/node/index.d.ts
+node_modules/vite/dist/node/cli.js
+node_modules/vite/dist/node/chunks/dep-ebfb454b.js
+node_modules/vite/dist/node/chunks/dep-bcdce950.js
+node_modules/vite/dist/node/chunks/dep-3b8eb186.js
+node_modules/vite/dist/node-cjs/publicUtils.cjs
