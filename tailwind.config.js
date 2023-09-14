@@ -19,7 +19,7 @@ module.exports = {
           2: "hsl(var(--color-text-hover) / <alpha-value>)",
           3: "hsl(var(--color-bkg) / <alpha-value>)",
         },
-        hover: "hsl(var(--color-hover) / <alpha-value>)",
+        hover: "hsl(var(--color-bkg-hover) / <alpha-value>)",
       },
     },
   },

@@ -4,4 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-new-appointment',
   templateUrl: './new-appointment.component.html',
 })
-export class NewAppointmentComponent {}
+export class NewAppointmentComponent {
+
+
+}

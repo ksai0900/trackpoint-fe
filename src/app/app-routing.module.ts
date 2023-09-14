@@ -9,12 +9,11 @@ import { AppComponent } from './app.component';
 
 const routes: Routes = [
   {
-    path: '', component: HomeComponent,
+    path: '', canActivate: [AuthGuard], component: HomeComponent,
     children: [
       { path: 'appointments', component: AppointmentsComponent },
       { path: 'new', component: NewAppointmentComponent },
-
-    ], canActivate: [AuthGuard]
+    ],
   },
   { path: 'login', component: LoginComponent },
   { path: '**', redirectTo: '' }

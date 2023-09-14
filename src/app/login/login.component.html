@@ -1,3 +1,89 @@
-<pre>
-  app-login
-</pre>
+<div class="bg-bkg-2 h-screen w-screen flex justify-center">
+  <div
+    class="bg-bkg-3 p-6 h-auto w-auto self-center shadow-lg rounded-lg flex flex-col items-center space-y-4">
+    <div class="flex flex-col justify-between m-4">
+      <!-- Login Title -->
+      <div class="pointer-events-none text-content-1 mb-12">
+        <span class="font-bold text-2xl"><h1>Login</h1></span>
+        <span>Please sign in to continue</span>
+      </div>
+      <!-- Login Form -->
+      <div class="">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="flex flex-col">
+            <label for="username" class="font-medium text-content-1">
+              <ng-icon name="heroUser" class="pt-0.5 pr-5"></ng-icon>
+              Username
+            </label>
+            <input
+              type="text"
+              id="username"
+              placeholder=""
+              class="form-control"
+              formControlName="username"
+              name="username"
+              style="
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                padding: 8px;
+                outline: none;
+                transition: border-color 0.3s;
+              "
+              data-lpignore="true" />
+          </div>
+          <div class="flex flex-col">
+            <label for="password" class="font-medium text-content-1">
+              <ng-icon name="heroLockClosed" class="pt-0.5 pr-5"></ng-icon>
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              placeholder=""
+              class="form-control"
+              formControlName="password"
+              name="password"
+              style="
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                padding: 8px;
+                outline: none;
+                transition: border-color 0.3s;
+              "
+              data-lpignore="true" />
+          </div>
+          <div>
+            <div class="mt-2 rounded-md">
+              <label class="inline-flex items-center">
+                <input
+                  type="radio"
+                  class="form-radio text-indigo-600"
+                  formControlName="role"
+                  value="doctor" />
+                <span class="ml-2 text-content-1">Doctor</span>
+              </label>
+              <label class="inline-flex items-center ml-6">
+                <input
+                  type="radio"
+                  class="form-radio text-indigo-600"
+                  formControlName="role"
+                  value="secretary" />
+                <span class="ml-2 text-content-1">Secretary</span>
+              </label>
+            </div>
+          </div>
+          <div class="object-contain w-fit">
+            <div class="mt-8 p-3 shadow-md rounded-3xl mt-10 text-content-1 hover:bg-hover hover:text-content-2 ">
+              <input type="submit" value="Login" name="" />
+              <ng-icon name="heroArrowRight" class="pt-0.5 pr-5"></ng-icon>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div>
+        <div class=""></div>
+        <div class=""></div>
+      </div>
+    </div>
+  </div>
+</div>

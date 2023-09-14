@@ -1,13 +1,14 @@
 import { Component, HostBinding, effect, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
+import { UserModel } from 'src/app/models/user-model';
 
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
 })
 export class NavComponent {
-
+  public curentUser!: UserModel;
   isDarkMode!: boolean;
 
 
@@ -24,19 +25,26 @@ export class NavComponent {
   }
 
 
-  
-  
+
+  logout() {
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
+  }
+
   navigate(url: string) {
     this.router.navigate([url]);
   }
 
   ngOnInit() {
     this.loadSavedTheme();
+    this.curentUser = JSON.parse(localStorage.getItem('user') || '{}');
+
   }
 
 
   private loadSavedTheme() {
-
+    localStorage.setItem('theme', 'dark');
     const htmlElement = document.documentElement;
     if (localStorage.getItem('theme') === 'dark') {
       htmlElement.setAttribute('data-theme', 'dark');

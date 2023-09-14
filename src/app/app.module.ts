@@ -9,8 +9,10 @@ import { NewAppointmentComponent } from './home/new-appointment/new-appointment.
 import { AppointmentsComponent } from './home/appointments/appointments.component';
 import { LoginComponent } from './login/login.component';
 import { NgIconsModule } from '@ng-icons/core';
-import { heroCalendar, heroMoon, heroPlus, heroSun } from '@ng-icons/heroicons/outline';
-
+import { heroArrowLeftOnRectangle, heroArrowRight, heroCalendar, heroLockClosed, heroMoon, heroPlus, heroSun, heroUser } from '@ng-icons/heroicons/outline';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthGuard } from './home/auth/auth.guard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,10 +24,15 @@ import { heroCalendar, heroMoon, heroPlus, heroSun } from '@ng-icons/heroicons/o
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     AppRoutingModule,
-    NgIconsModule.withIcons({heroCalendar, heroPlus, heroMoon, heroSun}),
+    NgIconsModule.withIcons({heroArrowLeftOnRectangle, heroCalendar, heroPlus, heroMoon, heroSun, heroUser, heroLockClosed, heroArrowRight}),
   ],
-  providers: [],
+  providers: [
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
