@@ -9,10 +9,15 @@ import { NewAppointmentComponent } from './home/new-appointment/new-appointment.
 import { AppointmentsComponent } from './home/appointments/appointments.component';
 import { LoginComponent } from './login/login.component';
 import { NgIconsModule } from '@ng-icons/core';
-import { heroArrowLeftOnRectangle, heroArrowRight, heroCalendar, heroLockClosed, heroMoon, heroPlus, heroSun, heroUser } from '@ng-icons/heroicons/outline';
+import { heroArrowLeft, heroArrowLeftOnRectangle, heroArrowRight, heroCalendar, heroCheck, heroCheckCircle, heroLockClosed, heroMoon, heroPlus, heroSun, heroUser } from '@ng-icons/heroicons/outline';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './home/auth/auth.guard';
+import { TableComponent } from './util/table/table/table.component';
+import { bootstrapSortUp, bootstrapSortDown, bootstrapSortAlphaUp, bootstrapSortAlphaDown, bootstrapFunnel } from '@ng-icons/bootstrap-icons';
+import { DatePipe } from '@angular/common';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +25,8 @@ import { AuthGuard } from './home/auth/auth.guard';
     NavComponent,
     NewAppointmentComponent,
     AppointmentsComponent,
-    LoginComponent
+    LoginComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,
@@ -28,10 +34,15 @@ import { AuthGuard } from './home/auth/auth.guard';
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
-    NgIconsModule.withIcons({heroArrowLeftOnRectangle, heroCalendar, heroPlus, heroMoon, heroSun, heroUser, heroLockClosed, heroArrowRight}),
+    NgIconsModule.withIcons({ bootstrapSortUp, bootstrapSortDown, 
+      bootstrapSortAlphaUp, bootstrapSortAlphaDown, bootstrapFunnel, 
+      heroCheck, heroCheckCircle, heroArrowLeftOnRectangle, 
+      heroCalendar, heroPlus, heroMoon, heroSun, heroUser, 
+      heroLockClosed, heroArrowRight,  heroArrowLeft}),
   ],
   providers: [
-    AuthGuard
+    AuthGuard,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

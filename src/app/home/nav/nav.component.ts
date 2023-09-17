@@ -44,7 +44,7 @@ export class NavComponent {
 
 
   private loadSavedTheme() {
-    localStorage.setItem('theme', 'dark');
+
     const htmlElement = document.documentElement;
     if (localStorage.getItem('theme') === 'dark') {
       htmlElement.setAttribute('data-theme', 'dark');

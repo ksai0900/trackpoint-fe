@@ -20,7 +20,8 @@ export class LoginService {
 
 
     login(user: any):Observable<Object> {
-    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    const headers = new HttpHeaders({
+        'Content-Type': 'application/json'});
 
     const BODY = JSON.stringify(user);
 

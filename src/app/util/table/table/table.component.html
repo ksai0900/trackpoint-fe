@@ -1,0 +1,99 @@
+<!-- <pre>{{ data | json }}</pre> -->
+<!-- <pre>{{ meta | json }}</pre> -->
+<table class="min-w-full divide-y bg-bkg-3 border">
+  <thead class="bg-bkg-1">
+    <!-- Filter Inputs -->
+    <tr>
+      <th *ngFor="let header of headers" class="px-4 py-2">
+        <!-- Dropdown filter -->
+        <select
+          *ngIf="header.filterType === 'dropdown'"
+          [(ngModel)]="filter[header.key]"
+          (change)="applyFilter()"
+          class="p-2 border rounded-md w-full bg-bkg-2">
+          <option value="">All</option>
+          <option *ngFor="let option of header.filterOptions" [value]="option">{{ option }}</option>
+        </select>
+
+        <!-- Text input filter -->
+        <input
+          *ngIf="header.filterType === 'text'"
+          type="text"
+          [(ngModel)]="filter[header.key]"
+          (input)="applyFilter()"
+          placeholder="Filter {{ header.displayName }}..."
+          class="p-2 border rounded-md w-full bg-bkg-2 text-content-1" />
+      </th>
+    </tr>
+
+    <!-- Header Titles -->
+    <tr>
+      <th
+        *ngFor="let header of headers"
+        class="bg-bkg-1 px-6 py-3 text-left text-xs font-medium text-content-1 uppercase tracking-wider">
+        {{ header.displayName }}
+        <button (click)="sortData(header.key)" class="text-accent-1 hover:text-accent-2">
+          <!-- Sorting icons for text -->
+          <ng-icon
+            class="text-base"
+            *ngIf="header.filterType === 'text' && sortDirection[header.key] === 'asc'"
+            name="bootstrapSortAlphaDown"></ng-icon>
+          <ng-icon class="text-base"
+            *ngIf="header.filterType === 'text' && sortDirection[header.key] === 'desc'"
+            name="bootstrapSortAlphaUp"></ng-icon>
+
+          <!-- Sorting icons for numbers -->
+          <ng-icon class="text-base"
+            *ngIf="header.filterType === 'numbers' && sortDirection[header.key] === 'asc'"
+            name="bootstrapSortDown"></ng-icon>
+          <ng-icon class="text-base"
+            *ngIf="header.filterType === 'numbers' && sortDirection[header.key] === 'desc'"
+            name="bootstrapSortUp"></ng-icon>
+
+          <ng-icon class="text-base"
+            *ngIf="header.filterType === 'dates' && sortDirection[header.key] === 'asc'"
+            name="bootstrapSortUp"></ng-icon>
+          <ng-icon class="text-base"
+            *ngIf="header.filterType === 'dates' && sortDirection[header.key] === 'desc'"
+            name="bootstrapSortDown"></ng-icon>
+        </button>
+      </th>
+    </tr>
+  </thead>
+  <tbody class="bg-bkg-2 divide-y divide-gray-200">
+    <tr *ngFor="let item of currentPageData" class="hover:bg-content-2">
+      <td *ngFor="let header of headers" class="px-6 py-4 whitespace-nowrap">
+        <!-- Conditional check for boolean values -->
+        <ng-container *ngIf="isBoolean(item[header.key]); else dateCheck">
+          {{ item[header.key] ? "Yes" : "No" }}
+        </ng-container>
+
+        <!-- Conditional check for date format -->
+        <ng-template #dateCheck>
+          <ng-container *ngIf="isDate(item[header.key]); else defaultDisplay">
+            {{ item[header.key] | date : "MMMM d, y, h:mm a" }}
+          </ng-container>
+        </ng-template>
+
+        <!-- Default display for other data -->
+        <ng-template #defaultDisplay>{{ item[header.key] }}</ng-template>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="mt-4 flex justify-center items-center">
+  <button
+    [disabled]="meta.currentPage < 1"
+    (click)="prevPage()"
+    class="px-4 py-2 text-black rounded enabled:hover:bg-content-1 disabled:text-gray-300">
+    <ng-icon name="heroArrowLeft"></ng-icon>
+  </button>
+  <span>Page {{ meta.currentPage + 1 }} out of {{ meta.totalPages }}</span>
+  <button
+    [disabled]="meta.currentPage + 1 === meta.totalPages"
+    (click)="nextPage()"
+    class="px-4 py-2 text-black rounded enabled:hover:bg-content-1 disabled:text-gray-300">
+    <ng-icon name="heroArrowRight"></ng-icon>
+  </button>
+</div>

@@ -18,9 +18,9 @@
 
     @media(prefers-color-scheme:dark) {
         :root {
-            --color-bkg: 99deg 0% 18%;
+            --color-bkg: 99deg 0% 25%;
             --color-bkg-content: 99deg 0% 37%;
-            --color-bkg-content-item: 99deg 0% 57%;
+            --color-bkg-content-item: 99deg 0% 51%;
             --color-bkg-hover: 99deg 5% 87%;
             --color-text: 0deg 0% 92%;
             --color-text-hover: 217deg 32% 17%;
@@ -33,9 +33,9 @@
     }
 
     :root[data-theme="dark"] {
-        --color-bkg: 99deg 0% 18%;
+        --color-bkg: 99deg 0% 25%;
         --color-bkg-content: 99deg 0% 37%;
-        --color-bkg-content-item: 99deg 0% 57%;
+        --color-bkg-content-item: 99deg 0% 51%;
         --color-bkg-hover: 99deg 5% 87%;
         --color-text: 0deg 0% 92%;
         --color-text-hover: 217deg 32% 17%;
