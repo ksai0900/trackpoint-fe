@@ -1,4 +1,4 @@
-import { Component, HostBinding, effect, signal } from '@angular/core';
+import { Component, HostBinding, OnInit, effect, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
 import { UserModel } from 'src/app/models/user-model';
@@ -7,7 +7,7 @@ import { UserModel } from 'src/app/models/user-model';
   selector: 'app-nav',
   templateUrl: './nav.component.html',
 })
-export class NavComponent {
+export class NavComponent implements OnInit {
   public curentUser!: UserModel;
   isDarkMode!: boolean;
 
@@ -15,15 +15,29 @@ export class NavComponent {
 
   buttons: {
     label: string, url: string, icon: string
-  }[] = [
-      { label: 'Appointments', url: '/appointments', icon: 'heroCalendar' },
-      { label: 'New Appointment', url: '/new', icon: 'heroPlus' },
-    ]
-
+  }[] = [];
   constructor(private router: Router) {
 
   }
 
+
+  ngOnInit() {
+    this.loadSavedTheme();
+    this.curentUser = JSON.parse(localStorage.getItem('user') || '{}');
+
+
+    const userData = localStorage.getItem('user');
+    if (userData) {
+      const user = JSON.parse(userData);
+      /* this.currentUser = user; */
+
+      if (user.category === 'doctor') {
+        this.buttons.push({ label: 'Appointments', url: '/appointments', icon: 'heroCalendar' });
+      } else if (user.category === 'secretary') {
+        this.buttons.push({ label: 'New Appointment', url: '/new', icon: 'heroPlus' });
+      }
+    }
+  }
 
 
   logout() {
@@ -36,11 +50,7 @@ export class NavComponent {
     this.router.navigate([url]);
   }
 
-  ngOnInit() {
-    this.loadSavedTheme();
-    this.curentUser = JSON.parse(localStorage.getItem('user') || '{}');
 
-  }
 
 
   private loadSavedTheme() {

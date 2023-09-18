@@ -32,9 +32,15 @@ export class LoginComponent {
     this.loginService.login(this.loginForm.value).subscribe(
       {
         next: (user: any) => {
+          debugger;
           localStorage.setItem('user', JSON.stringify(user));
           console.log("user ", user);
-          this.router.navigate(['/']);
+          if(user.category === "doctor"){
+            this.router.navigate(['/appointments']);
+          } else {
+            this.router.navigate(['/new']);
+          }
+
         },
         error: (error: any) => {
           alert('Login failed')
@@ -42,34 +48,6 @@ export class LoginComponent {
         }
       }
     );
-      
-
-
-
-/*     console.log("login form ", this.loginForm.value);
-    let authFlow = this.loginService
-      .login(this.loginForm.value)
-      .pipe(
-        switchMap((response: any) => {
-          console.log("token response ", response);
-          localStorage.setItem('token', JSON.stringify(response));
-          debugger;
-          return this.router.navigate(['/']);
-        }
-        ));
-    authFlow.subscribe(
-      {
-        next: (user: any) => {
-          console.log("user ", user);
-          this.router.navigate(['/']);
-        },
-        error: (error: any) => {
-          alert('Login failed')
-          console.log("error ", error);
-        }
-      }
-    );
- */
 
   }
 

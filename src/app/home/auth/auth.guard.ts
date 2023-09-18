@@ -12,17 +12,19 @@ export class AuthGuard {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot) {
-      console.log("user " + localStorage.getItem('user'))
-     if (localStorage.getItem('user')) {
-       // logged in so return true
-       console.log("authenticated")
-       return true;
-     }
+    console.log("user " + localStorage.getItem('user'))
+    const userData = localStorage.getItem('user');
+    const user = JSON.parse(userData || '{}');
+    if (user.category === "doctor") {
+      return true;
+    } 
+    if (user.category === "secretary") {
+      return true;
+    } 
 
-     console.log("not authenticated")
-     // not logged in so redirect to login page with the return url
-     this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
-     return false;
+
+    this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
+    return false;
 
 
   }
