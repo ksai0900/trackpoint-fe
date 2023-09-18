@@ -16,6 +16,7 @@ import { AuthGuard } from './home/auth/auth.guard';
 import { TableComponent } from './util/table/table/table.component';
 import { bootstrapSortUp, bootstrapSortDown, bootstrapSortAlphaUp, bootstrapSortAlphaDown, bootstrapFunnel } from '@ng-icons/bootstrap-icons';
 import { DatePipe } from '@angular/common';
+import { WebsocketService } from './services/WebsocketService';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { DatePipe } from '@angular/common';
     TableComponent
   ],
   imports: [
+    
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
@@ -42,7 +44,8 @@ import { DatePipe } from '@angular/common';
   ],
   providers: [
     AuthGuard,
-    DatePipe
+    DatePipe,
+    WebsocketService
   ],
   bootstrap: [AppComponent]
 })

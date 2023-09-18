@@ -2,6 +2,7 @@ import { Component, HostBinding, OnInit, effect, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
 import { UserModel } from 'src/app/models/user-model';
+import { WebsocketService } from 'src/app/services/WebsocketService';
 
 @Component({
   selector: 'app-nav',
@@ -37,6 +38,8 @@ export class NavComponent implements OnInit {
         this.buttons.push({ label: 'New Appointment', url: '/new', icon: 'heroPlus' });
       }
     }
+
+
   }
 
 

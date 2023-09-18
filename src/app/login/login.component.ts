@@ -32,7 +32,6 @@ export class LoginComponent {
     this.loginService.login(this.loginForm.value).subscribe(
       {
         next: (user: any) => {
-          debugger;
           localStorage.setItem('user', JSON.stringify(user));
           console.log("user ", user);
           if(user.category === "doctor"){

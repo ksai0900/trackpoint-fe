@@ -4,6 +4,7 @@ import { Appointments } from 'src/app/models/appointments';
 import { Observable, Subject, debounceTime, distinctUntilChanged } from 'rxjs';
 import { PaginationResponse } from 'src/app/models/pagination-response';
 import { PagResponseMeta } from 'src/app/models/pag-response-meta';
+import { WebsocketService } from 'src/app/services/WebsocketService';
 
 @Component({
   selector: 'app-appointments',
@@ -17,7 +18,8 @@ export class AppointmentsComponent {
   appointments: Appointments[] = [];
   metaData!: PagResponseMeta;
 
-  constructor(private appointmentsService: AppointmentsService, private cd: ChangeDetectorRef) { }
+  constructor(private appointmentsService: AppointmentsService, private cd: ChangeDetectorRef
+    , private webSocketService: WebsocketService) { }
 
   ngOnInit(): void {
     this.loadAppointmentsForDoctor(0, 10);
@@ -32,6 +34,12 @@ export class AppointmentsComponent {
       this.loadAppointmentsForDoctor(0, 10, filters);
     });
 
+    console.log('Component initialized');
+    this.webSocketService.messages.subscribe(msg => {
+      console.log('Response from websocket: ' + msg);
+      this.loadAppointmentsForDoctor(0, 10, this.currentFilters);
+      // other code
+    });
   }
 
 
